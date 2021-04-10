@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vaccinator.Models;
 
 namespace Vaccinator.Migrations
 {
     [DbContext(typeof(ContexteBDD))]
-    partial class ContexteBDDModelSnapshot : ModelSnapshot
+    [Migration("20210410151231_modifInjectionModel")]
+    partial class modifInjectionModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,12 +31,12 @@ namespace Vaccinator.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Lot")
+                        .HasMaxLength(10)
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Marque")
-                        .IsRequired()
+                    b.Property<int>("Marque")
                         .HasMaxLength(30)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PersonneId")
                         .HasColumnType("INTEGER");

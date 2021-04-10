@@ -2,54 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vaccinator.Models;
 
 namespace Vaccinator.Migrations
 {
     [DbContext(typeof(ContexteBDD))]
-    partial class ContexteBDDModelSnapshot : ModelSnapshot
+    [Migration("20210410145400_addInjection")]
+    partial class addInjection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.4");
-
-            modelBuilder.Entity("Vaccinator.Models.Injection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DatePremier")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateRappel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Lot")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Marque")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PersonneId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("VaccinId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonneId");
-
-                    b.HasIndex("VaccinId");
-
-                    b.ToTable("Injection");
-                });
 
             modelBuilder.Entity("Vaccinator.Models.Personne", b =>
                 {
@@ -95,21 +62,6 @@ namespace Vaccinator.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vaccin");
-                });
-
-            modelBuilder.Entity("Vaccinator.Models.Injection", b =>
-                {
-                    b.HasOne("Vaccinator.Models.Personne", "Personne")
-                        .WithMany()
-                        .HasForeignKey("PersonneId");
-
-                    b.HasOne("Vaccinator.Models.Vaccin", "Vaccin")
-                        .WithMany()
-                        .HasForeignKey("VaccinId");
-
-                    b.Navigation("Personne");
-
-                    b.Navigation("Vaccin");
                 });
 #pragma warning restore 612, 618
         }

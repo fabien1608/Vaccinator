@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vaccinator.Models;
 
 namespace Vaccinator.Migrations
 {
     [DbContext(typeof(ContexteBDD))]
-    partial class ContexteBDDModelSnapshot : ModelSnapshot
+    [Migration("20210410150651_addInjection2")]
+    partial class addInjection2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,24 +31,24 @@ namespace Vaccinator.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Lot")
+                        .HasMaxLength(10)
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Marque")
-                        .IsRequired()
+                    b.Property<int>("Marque")
                         .HasMaxLength(30)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PersonneId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("VaccinId")
+                    b.Property<int?>("personneId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("vaccinId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonneId");
+                    b.HasIndex("personneId");
 
-                    b.HasIndex("VaccinId");
+                    b.HasIndex("vaccinId");
 
                     b.ToTable("Injection");
                 });
@@ -99,17 +101,17 @@ namespace Vaccinator.Migrations
 
             modelBuilder.Entity("Vaccinator.Models.Injection", b =>
                 {
-                    b.HasOne("Vaccinator.Models.Personne", "Personne")
+                    b.HasOne("Vaccinator.Models.Personne", "personne")
                         .WithMany()
-                        .HasForeignKey("PersonneId");
+                        .HasForeignKey("personneId");
 
-                    b.HasOne("Vaccinator.Models.Vaccin", "Vaccin")
+                    b.HasOne("Vaccinator.Models.Vaccin", "vaccin")
                         .WithMany()
-                        .HasForeignKey("VaccinId");
+                        .HasForeignKey("vaccinId");
 
-                    b.Navigation("Personne");
+                    b.Navigation("personne");
 
-                    b.Navigation("Vaccin");
+                    b.Navigation("vaccin");
                 });
 #pragma warning restore 612, 618
         }

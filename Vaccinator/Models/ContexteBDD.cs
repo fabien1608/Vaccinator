@@ -17,5 +17,7 @@ namespace Vaccinator.Models
         }
 
         public DbSet<Vaccinator.Models.Vaccin> Vaccin { get; set; }
+
+        public DbSet<Vaccinator.Models.Injection> Injection { get; set; }
     }
 }
