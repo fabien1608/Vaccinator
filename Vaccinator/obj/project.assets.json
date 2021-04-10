@@ -9105,19 +9105,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fabie\\.nuget\\packages\\": {}
+    "C:\\Users\\Loan\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Cours\\.NET\\dev\\Vaccinator\\Vaccinator\\Vaccinator.csproj",
+      "projectUniqueName": "C:\\Users\\Loan\\Source\\Repos\\Vaccinator_fabien_3000\\Vaccinator\\Vaccinator.csproj",
       "projectName": "Vaccinator",
-      "projectPath": "C:\\Cours\\.NET\\dev\\Vaccinator\\Vaccinator\\Vaccinator.csproj",
-      "packagesPath": "C:\\Users\\fabie\\.nuget\\packages\\",
-      "outputPath": "C:\\Cours\\.NET\\dev\\Vaccinator\\Vaccinator\\obj\\",
+      "projectPath": "C:\\Users\\Loan\\Source\\Repos\\Vaccinator_fabien_3000\\Vaccinator\\Vaccinator.csproj",
+      "packagesPath": "C:\\Users\\Loan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Loan\\Source\\Repos\\Vaccinator_fabien_3000\\Vaccinator\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\fabie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
