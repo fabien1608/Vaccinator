@@ -41,7 +41,7 @@ namespace Vaccinator.Controllers
         // GET: Injections/Create
         public IActionResult Create()
         {
-            ViewData["listeDesPersonnes"] = new SelectList(_context.Personnes, "Id", dataTextField: "Nom", "Prenom", dataGroupField: "residence");
+            ViewData["listeDesPersonnes"] = new SelectList(_context.Personnes, "Id", dataTextField: "Nom", "Prenom", dataGroupField: "sexe");
             ViewData["listeDesVaccins"] = new SelectList(_context.Vaccin, "Id", "TypeV");
             return View();
         }

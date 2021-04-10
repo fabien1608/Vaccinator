@@ -13,7 +13,7 @@ namespace Vaccinator.Controllers
     {
         private readonly ContexteBDD _context = new ContexteBDD();
 
-       
+
         // GET: Personnes
         public async Task<IActionResult> Index()
         {
@@ -35,7 +35,7 @@ namespace Vaccinator.Controllers
                 return NotFound();
             }
 
-            
+
 
             var injection = _context.Injection.Include(e => e.Vaccin).Where(e => e.Personne.Id.Equals(id));
             ViewBag.injection = injection;
@@ -149,5 +149,97 @@ namespace Vaccinator.Controllers
         {
             return _context.Personnes.Any(e => e.Id == id);
         }
+
+        // GET: Personnes/NoGrippe
+        public async Task<IActionResult> NoGrippe()
+        {
+
+            var injections = _context.Injection
+                .Include(i => i.Vaccin)
+                .Include(i => i.Personne)
+                .Where(i => i.Vaccin.TypeV.Equals("Grippe"))
+                .ToList();
+
+            var personne = _context.Personnes.ToList();
+
+            for (int i = 0; i < injections.Count(); i++)
+            {
+                Injection CurrentI = injections[i];
+                Personne user = personne.Find(x => x.Id.Equals(CurrentI.Personne.Id));
+                if (user != null)
+                {
+                    personne.Remove(user);
+                }
+            }
+
+            return View(personne);
+            
+        }
+
+
+        // GET: Personnes/NoCovid
+        public async Task<IActionResult> NoCovid()
+        {
+
+            var injections = _context.Injection
+                .Include(i => i.Vaccin)
+                .Include(i => i.Personne)
+                .Where(i => i.Vaccin.TypeV.Equals("Covid-19"))
+                .ToList();
+
+            var personne = _context.Personnes.ToList();
+
+            for (int i = 0; i < injections.Count(); i++)
+            {
+                Injection CurrentI = injections[i];
+                Personne user = personne.Find(x => x.Id.Equals(CurrentI.Personne.Id));
+                if (user != null)
+                {
+                    personne.Remove(user);
+                }
+            }
+
+            return View(personne);
+
+        }
+
+        // GET: Personnes/GetRetard
+        public async Task<IActionResult> GetRetard()
+        {
+
+            var injections = _context.Injection
+                .Include(i => i.Vaccin)
+                .Include(i => i.Personne)
+                .ToList();
+
+            List<Injection> lastI = new List<Injection>();
+
+            
+            for (int i = 0; i < injections.Count(); i++)
+            {
+                Injection CurrentI = injections[i];
+                Injection injectionFound = lastI.Find(x => x.Personne.Id.Equals(CurrentI.Personne.Id) && x.Vaccin.Id.Equals(CurrentI.Vaccin.Id));
+                
+                if (injectionFound != null)
+                {
+                    
+                    if (CurrentI.DateRappel > injectionFound.DateRappel)
+                    {
+                        lastI.Remove(injectionFound);
+                        lastI.Add(CurrentI);
+                    }
+                   
+                }
+                else 
+                {
+                    lastI.Add(CurrentI);
+                }
+            }
+
+            DateTime now = DateTime.Now;
+            var InjectionLate = lastI.Where(i => i.DateRappel < now);
+            return View(InjectionLate);
+        }
+
     }
 }

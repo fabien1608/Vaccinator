@@ -45,5 +45,9 @@ namespace Vaccinator.Models
         [EnumDataType(typeof(Residence))]
         public virtual Residence residence { get; set; }
 
+        internal static Personne Find(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
