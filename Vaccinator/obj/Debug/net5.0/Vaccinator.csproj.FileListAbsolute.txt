@@ -182,3 +182,6 @@ C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Injections\
 C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Injections\Details.cshtml.g.cs
 C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Injections\Edit.cshtml.g.cs
 C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Injections\Index.cshtml.g.cs
+C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Personnes\NoCovid.cshtml.g.cs
+C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Personnes\NoGrippe.cshtml.g.cs
+C:\Cours\.NET\dev\Vaccinator\Vaccinator\obj\Debug\net5.0\Razor\Views\Personnes\GetRetard.cshtml.g.cs

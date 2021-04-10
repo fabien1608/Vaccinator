@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Vaccinator.Models.Injection>
+@{
+    ViewData["Title"] = "GetRetard";
+}
+
+
+<h1>Personne en retard de leur rappel</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Personne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vaccin)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personne.Nom)  @Html.DisplayFor(modelItem => item.Personne.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vaccin.TypeV)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
