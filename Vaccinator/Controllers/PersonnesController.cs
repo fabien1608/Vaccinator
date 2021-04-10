@@ -35,6 +35,11 @@ namespace Vaccinator.Controllers
                 return NotFound();
             }
 
+            
+
+            var injection = _context.Injection.Include(e => e.Vaccin).Where(e => e.Personne.Id.Equals(id));
+            ViewBag.injection = injection;
+
             return View(personne);
         }
 
